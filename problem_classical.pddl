@@ -113,6 +113,7 @@
         (road cathcart kinning-park-depot)
 
         ;;These are the local inter-area connections
+        (road pollokshields govanhill)
         (road govanhill pollokshields)
         (road shawlands battlefield)
         (road battlefield shawlands)
