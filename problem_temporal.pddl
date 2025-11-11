@@ -6,7 +6,7 @@
         driver1 driver2 driver3 - driver 
 
         ;;the vehicles
-        van1 truck1 bike1 - vehicles 
+        van1 truck1 bike1 - vehicle
 
         ;;packages
         pkgA pkgB pkgC pkgD pkgE pkgF - package 
@@ -60,14 +60,14 @@
         (fuel-stop mount-florida)
 
         ;;fuel capacities for every vehicle
-        (=(max-fuel van1) 5)
-        (=(max-fuel truck1) 6)
-        (=(max-fuel bike1) 4)
+        (= (max-fuel van1) 5)
+        (= (max-fuel truck1) 6)
+        (= (max-fuel bike1) 4)
 
         ;;initial fuel levels
-        (=(fuel-level van1) 3)
-        (=(fuel-level truck1) 3)
-        (=(fuel-level bike1) 2)
+        (= (fuel-level van1) 3)
+        (= (fuel-level truck1) 3)
+        (= (fuel-level bike1) 2)
 
         ;;road network
         (road kinning-park-depot pollokshields)

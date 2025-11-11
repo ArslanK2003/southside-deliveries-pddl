@@ -82,7 +82,7 @@
             (at end (not (at-driver ?d ?from)))
             (at end (driver-free ?d))
         )
-        )
+    )
 
 
     
@@ -256,7 +256,7 @@
                 not(vehicle-free ?v)
             ))
             (at end (
-                not(package-at ?p ?l)
+                not(package-at ?p ?v)
             ))
             (at end (
                 package-at ?p ?v
@@ -288,10 +288,13 @@
                 vehicle-free ?v
             ))
             (at start (
-                at-vehicle ?d  ?l
+                at-vehicle ?v  ?l
             ))
             (at start (
                 package-in ?p ?v 
+            ))
+            (at start (
+                at-driver ?d ?l
             ))
         )
         :effect (and 
@@ -389,7 +392,7 @@
     ;;refuel a vehicle at a location thats got a fuel station
     (:durative-action refuel
         :parameters (
-            ?v-vehicle ?l - location
+            ?v - vehicle ?l - location
         )
         :duration (= ?duration 5)
         :condition (and 
