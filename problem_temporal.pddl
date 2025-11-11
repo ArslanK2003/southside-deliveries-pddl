@@ -122,7 +122,24 @@
     )
 
     (:goal (and
-        
+        ;;delivery goals
+        (package-at pkgA shawlands)
+        (package-at pkgB battlefield)
+        (package-at pkgC govanhill)
+        (package-at pkgD langside)
+        (package-at pkgE cathcart)
+        (package-at pkgF mount-florida)
+
+        ;;all of the drivers back to kinning park depot
+        (at-driver driver1 kinning-park-depot)
+        (at-driver driver2 kinning-park-depot)
+        (at-driver driver3 kinning-park-depot)
+
+        ;;all of the vehicles back to the depot
+        (at-vehicle van1 kinning-park-depot)
+        (at-vehicle truck1 kinning-park-depot)
+        (at-vehicle bike1 kinning-park-depot)
+
     ))
 
 )

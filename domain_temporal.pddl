@@ -69,38 +69,22 @@
     
     ;;Drivers can walk between nearby locations
     (:durative-action walk
-        :parameters
-        (
-            ?d - driver ?from - location ?to - location
-        )
+        :parameters (?d - driver ?from - location ?to - location)
         :duration (= ?duration 5)
         :condition (and 
-            (at start (
-                driver-free ?d
-            ))
-            (at start (
-                at-driver ?d ?from
-            ))
-            (at start (
-                connected-walk ?from ?to
-            ))
+            (at start (driver-free ?d))
+            (at start (at-driver ?d ?from))
+            (at start (connected-walk ?from ?to))
+        )
+        :effect (and 
+            (at start (not (driver-free ?d)))
+            (at end (at-driver ?d ?to))
+            (at end (not (at-driver ?d ?from)))
+            (at end (driver-free ?d))
+        )
         )
 
-        :effect (and 
-            (at start (
-                not(driver-free ?d) 
-            ))
-            (at end (
-                at-driver ?d ?to
-            ))
-            (at end (
-                not(at-driver ?d ?from)
-            ))
-            (at-end (
-                driver-free ?d
-            ))
-        )
-    )
+
     
     ;;Driver boards the vehicle that is assigned to them
     (:durative-action board-vehicle
