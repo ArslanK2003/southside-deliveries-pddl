@@ -1,4 +1,4 @@
-(define (problem southisde-temporal-problem)
+(define (problem southside-temporal-problem)
     (:domain southside-temporal)
 
     (:objects
