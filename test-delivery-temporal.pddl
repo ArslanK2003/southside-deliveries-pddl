@@ -13,34 +13,34 @@
     (:domain southside-temporal)
 
     (:objects
-        ;;Drivers
+        ;; Drivers
         driver1 driver2 - driver
 
-        ;;Vehicles
+        ;; Vehicles
         van1 bike1 - vehicle
 
-        ;;Packages
+        ;; Packages
         pkgA pkgB pkgC - package
 
-        ;;Locations
+        ;; Locations
         kinning-park-depot shawlands battlefield govanhill langside - location
     )
 
     (:init
-        ;;Drivers start on foot at kinning park depot.
+        ;; Drivers start on foot at depot
         (at-driver driver1 kinning-park-depot)
         (at-driver driver2 kinning-park-depot)
 
-        ;;Vehicles start at kinning park depot.
+        ;; Vehicles at depot
         (at-vehicle van1 kinning-park-depot)
         (at-vehicle bike1 kinning-park-depot)
 
-        ;;Packages start at kinning park depot
+        ;; Packages at depot
         (package-at pkgA kinning-park-depot)
         (package-at pkgB kinning-park-depot)
         (package-at pkgC kinning-park-depot)
 
-        ;;Fuel system for each vehicle
+        ;;Fuel system
         (= (max-fuel van1) 5)
         (= (fuel-level van1) 2)
         (= (max-fuel bike1) 4)
@@ -74,7 +74,7 @@
         (road langside shawlands)
         (road shawlands kinning-park-depot)
 
-        ;;Walking network
+        ;;Walk network
         (connected-walk battlefield govanhill)
         (connected-walk govanhill battlefield)
 
@@ -96,12 +96,11 @@
         (package-at pkgB govanhill)
         (package-at pkgC shawlands)
 
-        ;;Return to kinning park depot
+        ;;Return to base
         (at-driver driver1 kinning-park-depot)
         (at-driver driver2 kinning-park-depot)
         (at-vehicle van1 kinning-park-depot)
         (at-vehicle bike1 kinning-park-depot)
     ))
-    
 )
 

@@ -3,6 +3,12 @@
 ;;Domain: southside-temporal
 ;;Name: Syed Mohammed Arslan Kazmi
 
+;;This domain shows a tempopral planning scenario for a parcel delivery system which operates
+;;in the southside of Glasgow. Drivers use different types of vehicles to deliver packages from a depot
+;;to different areas/neighbourhoods.
+
+;;The durative actions are used to represent real world timing and contstraints (such as fuel and capacity). 
+
     (:requirements
         :strips 
         :typing
@@ -11,6 +17,7 @@
         :numeric-fluents
     )
 
+    ;;Type definitions
     (:types
         driver 
         vehicle 
@@ -18,6 +25,7 @@
         location
     )
 
+    ;;prediactes
     (:predicates
         
         ;;Driver standing at a location and not in a vehicle. 
@@ -53,10 +61,14 @@
         ;;locations where the vehicles can refuel
         (fuel-stop ?l - location)
 
+        ;;driver is available to do an action
         (driver-free ?d - driver)
+
+        ;;vehicle is available to do an action
         (vehicle-free ?v - vehicle)
     )
 
+    ;;Numeric fluents
     (:functions
         ;;current fuel level for every vehicle
         (fuel-level ?v - vehicle)
@@ -67,7 +79,8 @@
 
     ;;Durative Actions
     
-    ;; Drivers can walk between nearby locations
+    ;; Drivers can walk between nearby locations (between 2 nearby neighbourhoods)
+    ;;It is only allowed between walkable links ("connected-walk")
     (:durative-action walk
         :parameters (?d - driver ?from - location ?to - location)
         :duration (= ?duration 5)
@@ -85,6 +98,7 @@
     )
 
     ;; Driver boards the vehicle assigned to them
+    ;;Both the driver and vehicle must be free
     (:durative-action board-vehicle
         :parameters (?d - driver ?v - vehicle ?l - location)
         :duration (= ?duration 1)
@@ -106,6 +120,7 @@
     )
 
     ;; Driver exits vehicle
+    ;;They become on foot at the current location
     (:durative-action unboard-vehicle
         :parameters (?d - driver ?v - vehicle ?l - location)
         :duration (= ?duration 1)
@@ -123,6 +138,7 @@
     )
 
     ;; Drive vehicle between locations, including fuel consumption
+    ;;It consumes 1 fuel unit
     (:durative-action drive-vehicle
         :parameters (?d - driver ?v - vehicle ?from - location ?to - location)
         :duration (= ?duration 6)
@@ -148,6 +164,7 @@
     )
 
     ;; Load package from location into the vehicle by the driver
+    ;;The vehicle must have available capacity.
     (:durative-action load-package
         :parameters (?d - driver ?v - vehicle ?p - package ?l - location)
         :duration (= ?duration 4)
@@ -193,6 +210,7 @@
     )
 
     ;; Transfer package between two vehicles at same location
+    ;;It is useful for any handovers between vehicles
     (:durative-action transfer-package
         :parameters (?d - driver ?p - package ?from-v - vehicle ?to-v - vehicle ?l - location)
         :duration (= ?duration 3)
@@ -221,6 +239,7 @@
     )
 
     ;; Refuel a vehicle at a location that has a fuel station
+    ;;Only free vehicles can refuel
     (:durative-action refuel
         :parameters (?v - vehicle ?l - location)
         :duration (= ?duration 5)
