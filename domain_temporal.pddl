@@ -262,6 +262,9 @@
     
 
 )
+    ;;GenAI Acknowledgement: Used ChatGPT to debug durative action syntax and improve temporal logic clarity. 
+    ;;Changed suggestions to ensure full understanding.
+
 
     ;; (:durative-action board-vehicle
     ;;     :parameters (

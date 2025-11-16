@@ -105,3 +105,24 @@
     
 )
 
+
+;;Analysis and Discussio
+
+;; Summary:
+;;This problem represents a parcel delivery system for the southside of Glasgow.
+;;It involves two drivers, two types of vehicles (van and bike), and 3 packages to deliver.
+
+;;Each package must be delivered to a specific area.
+;;Both drivers and vehicles must return to the depot after delivery.
+
+;; Constraints:
+;;Vehicles have limited fuel and must refuel at locations where fuel stops are available.
+;;Only specific vehicles can enter certain areas.
+;;Vehicles can only carry one package at a time.
+;;Drivers must be on foot to load and unload, and they must board to drive.
+
+;; Temporal Considerations:
+;;All actions are durative (for example, walking takes 5 time units).
+;;Actions cannot overlap due to both driver-free and vehicle-free predicates.
+
+;; This temporal problem is designed to demonstrate non-trivial planning with realistic logistics.
